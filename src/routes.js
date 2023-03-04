@@ -1,33 +1,23 @@
 import express from 'express';
-import Test from './components/test/test';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send(`db is ${process.env.DATABASE}`);
+  res.send('Hello world');
 });
 
-router.post('/add-test', async (req, res) => {
-  const { name, age } = req.body;
+// - real stuff below - TODO: remove this comment later
 
-  const test = new Test({ name, age });
-
-  try {
-    await test.save();
-    res.send(test);
-  } catch (e) {
-    res.status(500).send(e);
-  }
+router.post('/images', (req, res) => { // pildi ülesse laadimine
+  res.send('Hello world');
 });
 
-router.get('/test', async (req, res) => {
-  const test = await Test.find({});
+router.get('/images', (req, res) => { // piltide päring
+  res.send('Hello world');
+});
 
-  try {
-    res.send(test);
-  } catch (e) {
-    res.status(500).send(e);
-  }
+router.delete('/images/:imageId', (req, res) => { // pildi kustutamine
+  res.send('Hello world');
 });
 
 export default router;
