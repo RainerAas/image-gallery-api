@@ -1,17 +1,13 @@
 import express from 'express';
+import multer from 'multer';
+import { uploadImage, getImages, deleteImage } from './components/images/image.controller';
 
 const router = express.Router();
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
-router.post('/images', (req, res) => {
-  res.send('Hello world');
-});
-
-router.get('/images', (req, res) => {
-  res.send('Hello world');
-});
-
-router.delete('/images/:imageId', (req, res) => {
-  res.send('Hello world');
-});
+router.post('/images', upload.single('file'), uploadImage);
+router.get('/images', getImages);
+router.delete('/images/:imageId', deleteImage);
 
 export default router;
