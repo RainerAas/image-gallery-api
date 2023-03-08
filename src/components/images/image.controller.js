@@ -1,5 +1,5 @@
 export async function uploadImage(req, res) {
-  console.log(req);
+  console.log(req.file);
 
   res.send('Upload image');
 }
