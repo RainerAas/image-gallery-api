@@ -13,6 +13,15 @@ const ImageSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  width: {
+    type: Number,
+    required: true,
+  },
+  height: {
+    type: Number,
+    required: true,
+  },
+  placeholder: String,
 }, { timestamps: true });
 
 export default mongoose.model('Image', ImageSchema);
