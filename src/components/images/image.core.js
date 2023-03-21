@@ -25,7 +25,14 @@ export async function uploadImageCore(imageFile) {
     throw new Error(`Image too large, maximum allowed size is ${imageConfig.MAX_IMAGE_SIZE_BYTES} bytes`);
   }
 
-  const { width: originalWidth, height: originalHeight } = await sharp(imageFile.buffer).metadata();
+  const {
+    format,
+    width: originalWidth,
+    height: originalHeight,
+  } = await sharp(imageFile.buffer).metadata();
+
+  const optimizedBuffer = await sharp(imageFile.buffer)[format](imageConfig.OPTIMIZATIONS[format])
+    .toBuffer();
 
   const image = new Image({
     width: originalWidth,
@@ -36,11 +43,11 @@ export async function uploadImageCore(imageFile) {
 
   const imageName = `${image._id}-${imageFile.originalname}`;
 
-  await uploadToGCS(imageName, imageFile.buffer);
+  await uploadToGCS(imageName, optimizedBuffer);
 
   image.src = `https://storage.googleapis.com/${bucket.name}/${imageName}`;
 
-  const { data, info } = await sharp(imageFile.buffer)
+  const { data, info } = await sharp(optimizedBuffer)
     .raw()
     .ensureAlpha()
     .resize(32, null, { fit: 'inside' })
