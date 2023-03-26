@@ -1,6 +1,6 @@
 import express from 'express';
 import multer from 'multer';
-import { uploadImage, getImages, deleteImage } from './components/images/image.controller';
+import { uploadImage, getImages, deleteImage } from './components/images';
 
 const router = express.Router();
 const storage = multer.memoryStorage();
