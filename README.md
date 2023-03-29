@@ -30,7 +30,7 @@ Start by cloning the project to your own machine and then install the packages b
 
 You must create a file inside the project directory named **.env** and put some variables in there. A full list of those variables and an example can be found in the **.env.example** file.  
 
-You must create your own MongoDB database and put your connection string under the `DATABASE` variable.  
+You must create your own MongoDB database and put your connection string under the `DATABASE` variable. For that, using MongoDB Atlas is recommended as it is the easiest to set up.  
 
 For the Google Cloud Credientals you must create an Google Cloud Storage bucket. An explanation and how-to is found [here](https://cloud.google.com/storage/docs/discover-object-storage-console). **Please note, that the bucket's access control must be Fine-grained in order to grant public access to individual uploads**. 
 ## Available Scripts
