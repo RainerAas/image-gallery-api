@@ -23,7 +23,11 @@ In conjunction with the front-end, the application supports:
 
 **Note: you need to have Node.js installed on your machine.**
 
-Start by cloning the project to your own machine and then install the packages by using npm.
+Start by cloning the project to your own machine.  
+
+Now open command line and navigate inside the cloned project.  
+
+Finally, install the packages by using npm.  
 
 ```bash
   npm install
